@@ -199,6 +199,7 @@ async def buat_nomor_surat(update: Update, context: CallbackContext) -> None:
     tanggal_input, jenis_surat_input, kode_surat_input, *nama_dokumen_input = (
         context.args
     )
+    tahun_surat = tanggal_input.split("-")[2]
     tanggal_format = format_tanggal(tanggal_input)
     nama_dokumen = " ".join(nama_dokumen_input)
 
@@ -232,7 +233,7 @@ async def buat_nomor_surat(update: Update, context: CallbackContext) -> None:
     for index in df_filtered.index:
         if df.at[index, 4] == "":
             nomor_surat = df.at[index, 3]
-            takah = f"{jenis_surat}/{nomor_surat}/{kode_surat}/T3W-0D0L0000/2025"
+            takah = f"{jenis_surat}/{nomor_surat}/{kode_surat}/T3W-0D0L0000/{tahun_surat}"
 
             sheet.update_cell(index + 1, 5, takah)
             sheet.update_cell(index + 1, 6, nama_dokumen)
