@@ -11,13 +11,17 @@ from telegram.ext import (
     filters,
     CallbackContext,
 )
+from dotenv import load_dotenv
+
+load_dotenv()
+CHAT_ID = os.getenv("TARGET_CHAT_ID")
 
 # Ganti dengan token bot Telegram Anda
-TELEGRAM_BOT_TOKEN = "8125546968:AAGPkVcY3nsXz4PybdEdHqLuJynMo6OFG6A"
+TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # Setup Google Sheets API
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1_FiPvQRhzqZDOQKmADKs6DKsFn07AhfRp1DT_Vva0qU/edit?usp=sharing"  # Ganti dengan URL Google Sheets Anda
-CREDENTIALS_FILE = "credentials.json"  # Ganti dengan path ke file kredensial
+SHEET_URL = os.getenv("SPREADSHEET_URL")  # Ganti dengan URL Google Sheets Anda
+CREDENTIALS_FILE = os.getenv("GOOGLE_CREDENTIALS_FILE")  # Ganti dengan path ke file kredensial
 
 PIC_NAME = {
     52018198: "SUSI YUNITA",
