@@ -38,6 +38,7 @@ PIC_NAME = {
     1192100482: "VEMY",
     291730177: "WINDA",
     1317309156: "MAYUN",
+    1494465082: "DIAN",
 }
 # Inisialisasi Google Sheets API
 scope = [
