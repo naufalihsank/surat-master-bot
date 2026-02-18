@@ -49,9 +49,6 @@ scope = [
 ]
 creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
 client = gspread.authorize(creds)
-sheet = client.open_by_url(
-    SHEET_URL
-).sheet1  # Ganti `sheet1` dengan nama sheet yang sesuai
 
 # Mapping jenis surat
 JENIS_SURAT = {"internal": "C.Tel", "eksternal": "Tel", "kontrak": "K.Tel"}
@@ -208,7 +205,9 @@ async def buat_nomor_surat(update: Update, context: CallbackContext) -> None:
     if not jenis_surat or not kode_surat:
         await update.message.reply_text("Jenis surat atau kode surat tidak valid.")
         return
-
+    sheet = client.open_by_url(
+        SHEET_URL
+    ).worksheet(tahun_surat)
     data = sheet.get_all_values()
     df = pd.DataFrame(data)
 
